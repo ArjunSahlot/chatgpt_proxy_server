@@ -1,3 +1,5 @@
+import { Configuration, OpenAIApi } from 'openai';
+
 const express = require('express');
 const cors = require('cors');
 
@@ -10,32 +12,19 @@ app.use(express.json());
 app.post('/webchatgpt', async (req, res) => {
   try {
     const question = req.body.question;
-    const token = req.body.token;
-    const cookie = req.body.cookie;
 
-    const url = 'https://chat.openai.com/backend-api/conversation';
+    const config = new Configuration({
+      apiKey: process.env.PAWANKRD_KEY,
+      basePath: "https://api.pawan.krd/v1",
+    })
 
-    const requestBody = {
+    const openai = new OpenAIApi(config);
+
+    const response = await openai.createChatCompletion({
       model: 'text-davinci-002-render-sha',
       messages: [{ "role": "user", "content": question }],
       temperature: 0.7,
-      action: 'next',
-      timezone_offset_min: new Date().getTimezoneOffset(),
-      variant_purpose: 'none',
-      history_and_training_disabled: true,
-    };
-
-    console.log(token);
-    const response = await fetch(url, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-        ...(cookie && { Cookie: cookie })
-      },
-      body: JSON.stringify(requestBody),
-    });
+    })
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
