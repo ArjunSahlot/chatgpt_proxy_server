@@ -35,6 +35,7 @@ app.post('/webchatgpt', async (req, res) => {
     res.status(200).json({ answer });
 
   } catch (error) {
+    console.log(error);
     console.error(JSON.stringify(error.response.data));
     res.status(500).json({ error: error.message });
   }
