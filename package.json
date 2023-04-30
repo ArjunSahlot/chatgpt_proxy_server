@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/ArjunSahlot/chatgpt_proxy_server/issues"
   },
-  "homepage": "https://github.com/ArjunSahlot/chatgpt_proxy_server#readme"
+  "homepage": "https://github.com/ArjunSahlot/chatgpt_proxy_server#readme",
+  "type": "module"
 }
