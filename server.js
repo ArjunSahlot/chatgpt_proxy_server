@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-app.post('/api/webchatgpt', async (req, res) => {
+app.post('/webchatgpt', async (req, res) => {
   try {
     const question = req.body.question;
     const token = req.body.token;
