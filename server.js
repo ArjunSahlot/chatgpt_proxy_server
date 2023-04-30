@@ -31,7 +31,7 @@ app.post('/webchatgpt', async (req, res) => {
     }
 
     const result = await response.json();
-    const answer = result.choices && result.choices[0] && result.choices[0].text.trim();
+    const answer = response.data.choices[0].message.content;
 
     res.status(200).json({ answer });
 
