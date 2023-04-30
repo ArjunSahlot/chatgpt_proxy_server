@@ -20,7 +20,7 @@ app.post('/webchatgpt', async (req, res) => {
     const openai = new OpenAIApi(config);
 
     const response = await openai.createChatCompletion({
-      model: 'text-davinci-002-render-sha',
+      model: 'gpt-3.5-turbo',
       messages: [{ "role": "user", "content": question }],
       temperature: 0.7,
     })
@@ -35,7 +35,7 @@ app.post('/webchatgpt', async (req, res) => {
     res.status(200).json({ answer });
 
   } catch (error) {
-    console.error(error);
+    console.error(JSON.stringify(error.response.data));
     res.status(500).json({ error: error.message });
   }
 });
