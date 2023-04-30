@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "chatgpt_proxy_server",
+  "description": "Personal ChatGPT proxy server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArjunSahlot/chatgpt_proxy_server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArjunSahlot/chatgpt_proxy_server/issues"
+  },
+  "homepage": "https://github.com/ArjunSahlot/chatgpt_proxy_server#readme"
+}
