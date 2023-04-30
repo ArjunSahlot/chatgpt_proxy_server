@@ -25,6 +25,7 @@ app.post('/webchatgpt', async (req, res) => {
       history_and_training_disabled: true,
     };
 
+    console.log(token);
     const response = await fetch(url, {
       method: 'POST',
       credentials: 'include',
