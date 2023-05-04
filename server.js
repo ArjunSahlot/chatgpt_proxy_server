@@ -12,7 +12,7 @@ fetch('https://api.pawan.krd/resetip', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': process.env.PAWANKRD_KEY
+    'Authorization': `Bearer ${process.env.PAWANKRD_KEY}`
   }
 }).catch((error) => { console.log(error) });
 
