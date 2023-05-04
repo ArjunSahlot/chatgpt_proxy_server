@@ -4,18 +4,17 @@ import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 3000;
-
+const config = new Configuration({
+      apiKey: process.env.PAWANKRD_KEY,
+      basePath: "https://api.pawan.krd/v1",
+    })
 app.use(cors());
 app.use(express.json());
+
 
 app.post('/webchatgpt', async (req, res) => {
   try {
     const question = req.body.question;
-
-    const config = new Configuration({
-      apiKey: process.env.PAWANKRD_KEY,
-      basePath: "https://api.pawan.krd/v1",
-    })
 
     const openai = new OpenAIApi(config);
 
