@@ -8,6 +8,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+fetch('https://api.pawan.krd/resetip', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': process.env.PAWANKRD_KEY
+  }
+}).catch((error) => { console.log(error) });
+
 const config = new Configuration({
   apiKey: process.env.PAWANKRD_KEY,
   basePath: "https://api.pawan.krd/v1",
