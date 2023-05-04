@@ -24,7 +24,6 @@ app.post('/webchatgpt', async (req, res) => {
       temperature: 0.7,
     })
 
-    console.log(response);
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
@@ -32,6 +31,7 @@ app.post('/webchatgpt', async (req, res) => {
     const result = await response.json();
     const answer = result.data.choices[0].message.content;
 
+    console.log(answer);
     res.status(200).json({ answer });
 
   } catch (error) {
