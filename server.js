@@ -14,13 +14,13 @@ app.use(express.json());
 
 app.post('/webchatgpt', async (req, res) => {
   try {
-    const question = req.body.question;
+    const prompt = req.body.prompt;
 
     const openai = new OpenAIApi(config);
 
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      messages: [{ "role": "user", "content": question }],
+      messages: [{ "role": "user", "content": prompt }],
       temperature: 0.7,
     })
 
