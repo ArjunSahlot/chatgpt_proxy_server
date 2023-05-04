@@ -3,20 +3,19 @@ import express from 'express';
 import cors from 'cors';
 
 const app = express();
-const port = process.env.PORT || 3000;
-const config = new Configuration({
-      apiKey: process.env.PAWANKRD_KEY,
-      basePath: "https://api.pawan.krd/v1",
-    })
 app.use(cors());
 app.use(express.json());
 
+const port = process.env.PORT || 3000;
+const config = new Configuration({
+  apiKey: process.env.PAWANKRD_KEY,
+  basePath: "https://api.pawan.krd/v1",
+})
+const openai = new OpenAIApi(config);
 
-app.post('/webchatgpt', async (req, res) => {
+app.post('/chatgpt', async (req, res) => {
   try {
     const prompt = req.body.prompt;
-
-    const openai = new OpenAIApi(config);
 
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
