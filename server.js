@@ -2,11 +2,12 @@ import { Configuration, OpenAIApi } from 'openai';
 import express from 'express';
 import cors from 'cors';
 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const port = process.env.PORT || 3000;
 const config = new Configuration({
   apiKey: process.env.PAWANKRD_KEY,
   basePath: "https://api.pawan.krd/v1",
@@ -19,7 +20,7 @@ app.post('/pawanchatgpt', async (req, res) => {
 
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      messages: [{ "role": "user", "content": prompt }],
+      messages: messages,
       temperature: req.body.temperature || 0.7,
     })
 
@@ -67,6 +68,6 @@ app.post('/webchatgpt', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port http://localhost:${PORT}`);
 });
